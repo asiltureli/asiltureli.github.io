@@ -40,7 +40,7 @@ private:
 };
 ```
 
-Now we are ready to test our class.
+The ```SimpleWrapper``` takes an ```ClassToTest``` as reference and allows us to call its ```some_call``` method. Now we are ready to test our class.
 
 ## Writing and running some tests in Catch2
 
@@ -72,11 +72,11 @@ In the second test case, we define a ```NiceMock```, which doesn`t affect our te
 ## Running the test
 Lets run our tests, which should obviously fail:
 
-![(1) First Test Results of CTest](gmockcatch2danger/test_result_1_ctest.png)
+![(1) First Test Results of CTest](../images/gmockcatch2danger1/test_result_1_ctest.png)
 
 This result is interesting and not what we would expect or want. Let's simple run and see the output of our executable:
 
-![(1) First Test Results of Executable](gmockcatch2danger/test_result_1_exe.png)
+![(1) First Test Results of Executable](../images/gmockcatch2danger1/test_result_1_exe.png)
 
 The result is still the same however we can see that something is odd. Here's what happens: we are using the precompiled ```main()``` of Catch2, which simply looks something like:
 
@@ -88,7 +88,7 @@ int main (int argc, char * argv[]) {
 ```
 That means we are getting the result of our tests from ```Catch2::Session```. However the question is: does Catch2 recognize that GMock/GTest expressions are failing? The answer is **NO!**. The tests that are being conducted by Googletest must be passed to the Catch2. And Googletest developers have addressed this issue: 
 
-https://chromium.googlesource.com/external/github.com/google/googletest/+/refs/tags/release-1.8.0/googlemock/docs/ForDummies.md#using-google-mock-with-any-testing-framework
+[Using Google Mock with Any Testing Framework](https://chromium.googlesource.com/external/github.com/google/googletest/+/refs/tags/release-1.8.0/googlemock/docs/ForDummies.md#using-google-mock-with-any-testing-framework)
 
 TLDR: If you want to use GMock with other testing frameworks, it must be fine-tuned.
 
@@ -97,5 +97,5 @@ This issue is pretty obvious and straightforward after reading about it or figur
 ## Summary
   Catch2 and GMock together form a very strong testing combination. However they do not work together out of the box. This might trick you into pushing a buggy code into the production.
 
-  Thank you for reading. In the next post, I will go into detail on how to solve this issue.
+  Thank you for reading. The source code for this post can be found [here](https://github.com/asiltureli/GMockWithCatch2) In the next post, I will go into detail on how to solve this issue.
 
