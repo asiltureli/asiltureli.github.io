@@ -1,7 +1,7 @@
 ---
 title: The correct way to use GMock with Catch2 
 date: 2024-11-26 19:22:48
-tags: c++
+tags: C++
 ---
 Hello World! In the [last post](https://asiltureli.github.io/2024/11/22/gmockcatch2danger) I talked about the possible pitfalls of combining Catch2 with GMock. In this post I will go through the solution to this problem.
 

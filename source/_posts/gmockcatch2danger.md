@@ -2,11 +2,11 @@
 title: The danger of combining GMock with Catch2  
 tags: C++
 ---
-Recently I stumbled upon a problem at work while writing unit tests. The unit tests I wrote were not failing even though they were supposed to fail. At first, I thought I had made a mistake in my mock classes, but the issue turned out to be completely different.
+Recently I stumbled upon a problem while writing unit tests. The unit tests I wrote were not failing even though they were supposed to fail. At first, I thought I had made a mistake in my mock classes, but the issue turned out to be completely different.
 
 Catch2 is a great BDD (Behavior Driving Development) framework for C++, however it lacks a main functionality; Mocking. Therefore it would be useful to deploy GMock at this point. However this comes with a great danger. In this post I want to write about the danger and possible pitfall of combining GMock with Catch2 or possibly any other unit testing framework. 
 
-One might thing: why not GoogleTest? The question is understandable but GTest does not offer BDD. It is designed to write TDD tests. Therefore it is a combination, which makes completely sense. 
+One might think: why not GoogleTest? The question is understandable but GTest does not offer BDD. It is designed to write TDD tests. Therefore it is a combination, which makes completely sense. 
 
 I will share the complete code in my repository.
 
@@ -74,7 +74,7 @@ Lets run our tests, which should obviously fail:
 
 ![(1) First Test Results of CTest](../images/gmockcatch2danger1/test_result_1_ctest.png)
 
-This result is interesting and not what we would expect or want. Let's simple run and see the output of our executable:
+This result is interesting and not what we would expect or want. Let's simply run and see the output of our executable:
 
 ![(1) First Test Results of Executable](../images/gmockcatch2danger1/test_result_1_exe.png)
 
